@@ -6,12 +6,12 @@ from pathlib import Path
 from os import walk
 
 def write_csv(path, csv_row):
-    full_path = 'excel_files/decoded/' + path
+    full_path = 'output_folder' + path
     with open(full_path, 'a', newline='', encoding="utf-8") as f:
         f.write(csv_row)
 
 def read_xlsx(fileName):
-    path = 'excel_files/'
+    path = 'input_folder'
     xlsx_file = Path(path+fileName)
     wb_obj = openpyxl.load_workbook(xlsx_file)
     sheet = wb_obj.active
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     #multiprocess addition
     q = Queue()
     procs = []
-    create_queue('excel_files', q)
+    create_queue('input_folder', q)
     pool = multiprocessing.Pool(processes=(multiprocessing.cpu_count()-1))
 
     while not (q.empty()):
@@ -158,7 +158,7 @@ if __name__ == '__main__':
     pool.close()
     pool.join()
 
-    # filenames = next(walk('excel_files'), (None, None, []))[2]  # [] if no file
+    # filenames = next(walk('input_folder'), (None, None, []))[2]  # [] if no file
     # print(filenames)
     # for fileName in filenames:
     #     print(fileName.replace(".xlsx", ".csv"))
