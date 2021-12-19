@@ -6,8 +6,8 @@ import xlrd
 from pathlib import Path
 from os import walk
 
-input_folder = 'Veriler1/SPREADSHEET_HARICI/'
-output_folder = 'Veriler1/E_SPREADSHEET_HARICI/'
+input_folder = 'Veriler2/SPREADSHEET_HARICI/'
+output_folder = 'Veriler2/E_SPREADSHEET_HARICI/'
 
 def write_csv(path, csv_row):
     full_path = output_folder + path
